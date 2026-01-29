@@ -15,3 +15,11 @@ export default function CTA() {
     </section>
   )
 }
+<a
+  href="/JuanDev_CV.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-medium"
+>
+  Descargar CV
+</a>

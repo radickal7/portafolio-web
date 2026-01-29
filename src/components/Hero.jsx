@@ -13,8 +13,18 @@ export default function Hero() {
           </h1>
           <p className="text-gray-400 mt-6 text-lg">{t("hero.description")}</p>
           <div className="flex gap-4 mt-8">
-            <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-medium">{t("hero.projects")}</button>
-            <button className="border border-gray-600 text-gray-300 px-6 py-3 rounded-xl hover:border-white hover:text-white">{t("hero.contact")}</button>
+            <a
+              href="#projects"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-xl font-medium"
+            >
+              {t("hero.projects")}
+            </a>
+            <a
+              href="#contact"
+              className="border border-gray-600 text-gray-300 px-6 py-3 rounded-xl hover:border-white hover:text-white"
+            >
+              {t("hero.contact")}
+            </a>
           </div>
         </div>
         <div className="hidden md:flex justify-center">
