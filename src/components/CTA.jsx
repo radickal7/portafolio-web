@@ -10,7 +10,7 @@ export default function CTA() {
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl font-bold text-white">{cta.title}</motion.h2>
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-gray-400 mt-6 text-lg">{cta.description}</motion.p>
-        <motion.a href="mailto:tuemail@email.com" whileHover={{ scale: 1.05 }} className="inline-block mt-10 bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-xl font-medium">{cta.button}</motion.a>
+        <motion.a href="mailto:juanjmacchiarulo@gmail.com" whileHover={{ scale: 1.05 }} className="inline-block mt-10 bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-xl font-medium">{cta.button}</motion.a>
       </div>
     </section>
   )
