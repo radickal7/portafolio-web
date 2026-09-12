@@ -1,5 +1,6 @@
 import Hero from "../components/sections/Hero"
 import TechStrip from "../components/sections/TechStrip"
+import WhatCanISolve from "../components/sections/WhatCanISolve"
 import Capabilities from "../components/sections/Capabilities"
 import FeaturedProjects from "../components/sections/FeaturedProjects"
 import Services from "../components/sections/Services"
@@ -13,6 +14,7 @@ export default function Home() {
     <main>
       <Hero />
       <TechStrip />
+      <WhatCanISolve />
       <Capabilities />
       <FeaturedProjects />
       <Services />

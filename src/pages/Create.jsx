@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import ProjectBuilder from "../components/project-builder/ProjectBuilder"
+import { useEffect, lazy, Suspense } from "react"
+const ProjectBuilder = lazy(() => import("../components/project-builder/ProjectBuilder"))
 
 export default function Create() {
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function Create() {
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-300">Creador de Apps · JuanDev Product Studio</div>
             <h1 className="mt-4 text-[32px] md:text-[46px] font-extrabold tracking-[-0.03em] text-white leading-[0.95]">Convierte tu idea en una aplicación.</h1>
             <p className="mt-4 text-slate-400 leading-relaxed max-w-xl">Cuéntame qué quieres construir y te ayudaré a definir las funcionalidades, plataformas y características necesarias para convertir tu idea en un producto digital.</p>
+            <p className="mt-3 text-sm text-indigo-200">Cuéntame tu idea con tus propias palabras. Yo me encargo de traducirla a una propuesta técnica.</p>
             <div className="mt-6 flex flex-wrap gap-3 items-center">
               <a href="#builder" className="bg-white text-slate-900 px-6 py-3.5 rounded-full font-semibold hover:bg-slate-100">Comenzar proyecto →</a>
               <span className="text-xs text-slate-500">Toma menos de 2 minutos</span>
@@ -39,7 +40,9 @@ export default function Create() {
       </section>
 
       <div id="builder" className="max-w-[1280px] mx-auto px-5 lg:px-6 mt-2">
-        <ProjectBuilder />
+        <Suspense fallback={<div className="rounded-2xl border border-white/10 bg-[#0b1220] p-8 text-center text-slate-400 text-sm">Cargando creador...</div>}>
+          <ProjectBuilder />
+        </Suspense>
         <div className="mt-8 text-center text-xs text-slate-500">Al solicitar propuesta se abrirá tu cliente de correo con el brief estructurado. Payload incluye <code className="text-slate-400">projectType, features, platforms, projectStage, priorities, description, budget, estimatedComplexity, estimatedRange</code>. Sin almacenamiento permanente.</div>
       </div>
     </main>

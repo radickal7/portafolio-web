@@ -27,6 +27,7 @@ export default function Hero() {
           <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.14, duration: 0.5 }} className="mt-4 text-[16px] md:text-[18px] leading-relaxed text-slate-400 max-w-[560px]">
             {t("hero.subtitle")}
           </motion.p>
+          <p className="mt-3 text-sm text-slate-500 max-w-[560px]">Para negocios, emprendedores y proyectos que necesitan convertir una idea en software.</p>
 
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }} className="mt-6 flex flex-wrap items-center gap-3">
             <Link to="/create" className="inline-flex items-center justify-center bg-white text-slate-900 px-6 py-3.5 rounded-full text-[14px] font-semibold hover:bg-slate-100 transition">

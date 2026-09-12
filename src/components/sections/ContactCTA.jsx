@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import { contactConfig } from "../../lib/contactConfig"
 
 export default function ContactCTA() {
   const { t } = useTranslation()
@@ -15,6 +16,7 @@ export default function ContactCTA() {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link to="/create" className="bg-white text-slate-900 px-6 py-3.5 rounded-full font-semibold text-center hover:bg-slate-100">{t("cta.button")} →</Link>
             <a href="mailto:juanjmacchiarulo@gmail.com" className="border border-white/15 text-white px-6 py-3.5 rounded-full font-semibold text-center hover:bg-white/5">juanjmacchiarulo@gmail.com</a>
+            {contactConfig.whatsappUrl && <a href={contactConfig.whatsappUrl} target="_blank" rel="noreferrer" className="bg-emerald-500 text-white px-6 py-3.5 rounded-full font-semibold text-center hover:bg-emerald-600">WhatsApp</a>}
           </div>
         </div>
       </div>
