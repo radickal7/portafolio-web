@@ -1,11 +1,14 @@
 import ProjectOption from "./ProjectOption"
+import { useTranslation } from "react-i18next"
 import { budgetOptions } from "../../lib/projectBuilderConfig"
 
 export default function StepBudget({ value, onChange, name, email, onName, onEmail }) {
+  const { t } = useTranslation()
+  const step = t("builder.steps.6", { returnObjects: true })
   return (
     <div>
-      <h3 className="text-xl font-bold text-white">¿Tienes un presupuesto aproximado?</h3>
-      <p className="text-sm text-slate-400 mt-2">Nunca lo presentamos como cotización definitiva. Solo para dimensionar.</p>
+      <h3 className="text-xl font-bold text-white">{step.title}</h3>
+      <p className="text-sm text-slate-400 mt-2">{step.subtitle}</p>
       <div className="mt-6 grid md:grid-cols-2 gap-3">
         {budgetOptions.map((b) => (
           <ProjectOption key={b.id} selected={value === b.id} onClick={() => onChange(b.id)} emoji={b.emoji} label={b.label} />

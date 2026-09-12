@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import Progress from "./Progress"
 import StepType from "./StepType"
 import StepFeatures from "./StepFeatures"
@@ -28,6 +29,7 @@ const defaultData = {
 }
 
 export default function ProjectBuilder() {
+  const { t } = useTranslation()
   const [step, setStep] = useState(1)
   const [data, setData] = useState(defaultData)
   const [started, setStarted] = useState(false)
@@ -37,7 +39,6 @@ export default function ProjectBuilder() {
 
   const total = 7
 
-  // load persistence
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
@@ -50,7 +51,6 @@ export default function ProjectBuilder() {
     } catch (_e) { /* ignore */ }
   }, [])
 
-  // save persistence
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step, started })) } catch (_e) { /* ignore */ }
   }, [data, step, started])
@@ -73,8 +73,8 @@ export default function ProjectBuilder() {
 
   const errorMsg = () => {
     if (canNext()) return ""
-    if (step === 6) return "Cuéntame brevemente qué quieres construir para continuar."
-    if (step === 7 && !data.email.includes("@") && data.email) return "Revisa tu email."
+    if (step === 6) return t("builder.tellMeBriefly")
+    if (step === 7 && !data.email.includes("@") && data.email) return t("builder.reviewEmail")
     return ""
   }
 
@@ -82,11 +82,11 @@ export default function ProjectBuilder() {
     if (!canNext()) { setError(errorMsg() || "Completa este paso para continuar."); return }
     setError("")
     if (step < total) setStep((s) => s + 1)
-    else setStep(8) // summary
+    else setStep(8)
   }
 
   const handleSend = () => {
-    if (!data.email.includes("@")) { setError("Revisa tu email."); return }
+    if (!data.email.includes("@")) { setError(t("builder.reviewEmail")); return }
     setError("")
     setSending(true)
     try {
@@ -110,7 +110,6 @@ export default function ProjectBuilder() {
       )
       window.location.href = `mailto:juanjmacchiarulo@gmail.com?subject=${subject}&body=${body}`
       setSent(true)
-      // keep in storage for recovery, but mark sent
     } catch (_e) {
       setError("No se pudo abrir el cliente de correo. Escribí a juanjmacchiarulo@gmail.com")
     } finally { setSending(false) }
@@ -129,12 +128,12 @@ export default function ProjectBuilder() {
     return (
       <div className="max-w-[860px] mx-auto">
         <div className="rounded-[24px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-8 md:p-10 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-300">Toma menos de 2 minutos</div>
-          <h2 className="mt-4 text-2xl md:text-[28px] font-bold text-white tracking-[-0.02em]">Listo para empezar?</h2>
-          <p className="mt-3 text-slate-400 max-w-xl mx-auto">Responderás 7 pasos rápidos. Puedes volver, editar y retomar donde dejaste.</p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-300">{t("builder.lessThan2")}</div>
+          <h2 className="mt-4 text-2xl md:text-[28px] font-bold text-white tracking-[-0.02em]">{t("builder.readyToStart")}</h2>
+          <p className="mt-3 text-slate-400 max-w-xl mx-auto">{t("builder.readyDesc")}</p>
           <div className="mt-6 flex justify-center gap-3">
-            <button onClick={() => setStarted(true)} className="bg-white text-slate-900 px-7 py-3 rounded-full font-semibold hover:bg-slate-100">Comenzar proyecto →</button>
-            <button onClick={handleReset} className="border border-white/15 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/5">Reiniciar</button>
+            <button onClick={() => setStarted(true)} className="bg-white text-slate-900 px-7 py-3 rounded-full font-semibold hover:bg-slate-100">{t("createPage.startProject")} →</button>
+            <button onClick={handleReset} className="border border-white/15 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/5">{t("builder.restart")}</button>
           </div>
         </div>
       </div>
@@ -146,10 +145,10 @@ export default function ProjectBuilder() {
       <div className="max-w-[860px] mx-auto space-y-6">
         <ProjectSummary data={data} onEdit={(s) => setStep(s)} />
         <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-          <h4 className="text-white font-semibold">Primera aproximación</h4>
+          <h4 className="text-white font-semibold">{t("builder.approachTitle")}</h4>
           <p className="text-sm text-slate-300 mt-2 leading-relaxed">{approach}</p>
           <div className="mt-4">
-            <div className="text-xs font-semibold tracking-widest text-slate-400">COMPONENTES QUE PROBABLEMENTE NECESITARÍA</div>
+            <div className="text-xs font-semibold tracking-widest text-slate-400">{t("builder.componentsTitle")}</div>
             <div className="mt-2 flex flex-wrap gap-2">
               {components.map((c) => (<span key={c} className="px-3 py-1.5 rounded-full bg-white text-slate-900 text-xs font-semibold">{c}</span>))}
             </div>
@@ -159,10 +158,10 @@ export default function ProjectBuilder() {
         {error && <div className="text-sm text-red-400" role="alert">{error}</div>}
         {sent && <div className="text-sm text-emerald-400">¡Listo! Se abrió tu cliente de correo. Si no se abrió, escribí a juanjmacchiarulo@gmail.com</div>}
         <div className="flex flex-col md:flex-row gap-3">
-          <button onClick={handleSend} disabled={sending || sent} className="flex-1 bg-white text-slate-900 py-3.5 rounded-full font-semibold disabled:opacity-50 hover:bg-slate-100">{sending ? "Enviando..." : sent ? "Enviado ✓" : "Solicitar propuesta"}</button>
-          <button onClick={() => setStep(1)} className="flex-1 border border-white/15 text-white py-3.5 rounded-full font-semibold hover:bg-white/5">Modificar proyecto</button>
+          <button onClick={handleSend} disabled={sending || sent} className="flex-1 bg-white text-slate-900 py-3.5 rounded-full font-semibold disabled:opacity-50 hover:bg-slate-100">{sending ? "Enviando..." : sent ? "Enviado ✓" : t("builder.requestProposal")}</button>
+          <button onClick={() => setStep(1)} className="flex-1 border border-white/15 text-white py-3.5 rounded-full font-semibold hover:bg-white/5">{t("builder.modify")}</button>
         </div>
-        <button onClick={handleReset} className="text-xs text-slate-500 hover:text-slate-300">Cancelar y reiniciar</button>
+        <button onClick={handleReset} className="text-xs text-slate-500 hover:text-slate-300">{t("builder.cancelRestart")}</button>
       </div>
     )
   }
@@ -188,10 +187,10 @@ export default function ProjectBuilder() {
 
         <div className="mt-6 flex justify-between gap-3">
           <div className="flex gap-2">
-            <button disabled={step === 1} onClick={() => setStep((s) => Math.max(1, s - 1))} className="px-5 py-2.5 rounded-full border border-white/15 text-white text-sm font-semibold disabled:opacity-40 hover:bg-white/5">Atrás</button>
-            <button onClick={handleReset} className="hidden md:inline px-5 py-2.5 rounded-full border border-white/10 text-slate-400 text-sm hover:text-white">Reiniciar</button>
+            <button disabled={step === 1} onClick={() => setStep((s) => Math.max(1, s - 1))} className="px-5 py-2.5 rounded-full border border-white/15 text-white text-sm font-semibold disabled:opacity-40 hover:bg-white/5">{t("builder.back")}</button>
+            <button onClick={handleReset} className="hidden md:inline px-5 py-2.5 rounded-full border border-white/10 text-slate-400 text-sm hover:text-white">{t("builder.restart")}</button>
           </div>
-          <button disabled={!canNext()} onClick={handleNext} className="px-6 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold disabled:opacity-40 hover:bg-slate-100">{step === 7 ? "Ver resumen →" : "Siguiente →"}</button>
+          <button disabled={!canNext()} onClick={handleNext} className="px-6 py-2.5 rounded-full bg-white text-slate-900 text-sm font-semibold disabled:opacity-40 hover:bg-slate-100">{step === 7 ? `${t("builder.viewSummary")} →` : `${t("builder.next")} →`}</button>
         </div>
       </div>
     </div>
