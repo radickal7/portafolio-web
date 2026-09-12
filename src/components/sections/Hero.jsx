@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
+import { FaWhatsapp } from "react-icons/fa"
+import { contactConfig } from "../../lib/contactConfig"
 
 export default function Hero() {
   const { t } = useTranslation()
@@ -36,6 +38,11 @@ export default function Hero() {
             <a href="#projects" className="inline-flex items-center justify-center border border-white/15 text-white px-6 py-3.5 rounded-full text-[14px] font-semibold hover:bg-white/5 transition">
               {t("hero.ctaSecondary")}
             </a>
+            {contactConfig.whatsappUrl && (
+              <a href={contactConfig.whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 justify-center bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3.5 rounded-full text-[14px] font-semibold transition">
+                <FaWhatsapp size={16} /> WhatsApp
+              </a>
+            )}
           </motion.div>
 
           <div className="mt-8 flex flex-wrap gap-2 text-xs font-medium">

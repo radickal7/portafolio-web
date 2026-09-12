@@ -9,6 +9,7 @@ import Services from "./pages/Services"
 import ServiceDetail from "./pages/ServiceDetail"
 import Blog from "./pages/Blog"
 import BlogPost from "./pages/BlogPost"
+import WhatsAppFloating from "./components/layout/WhatsAppFloating"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
         <Footer />
+        <WhatsAppFloating />
       </div>
     </BrowserRouter>
   )
