@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next"
 const resources = {
   es: {
     translation: {
-      nav: { home: "Inicio", projects: "Proyectos", about: "Sobre mí", contact: "Contacto" },
+      nav: { home: "Inicio", projects: "Proyectos", about: "Sobre mí", contact: "Contacto", services: "Servicios", create: "Creador de Apps", cta: "Crear mi proyecto" },
       hero: {
         title1: "Desarrollo soluciones",
         title2: "web modernas",
@@ -24,15 +24,15 @@ const resources = {
         description: "Soy desarrollador web enfocado en crear aplicaciones modernas, escalables y orientadas a resultados. He trabajado en sistemas reales como plataformas de servicios, CRM y dashboards administrativos, cuidando tanto la experiencia de usuario como la arquitectura del sistema. Además, tengo experiencia en marketing digital front-end, desarrollando interfaces que no solo son atractivas y funcionales, sino que también están optimizadas para la conversión y la interacción del usuario. Me adapto rápido, comunico bien y priorizo soluciones que aporten valor al negocio."
       },
       cta: {
-        title: "¿Trabajamos juntos?",
-        description: "Estoy disponible para proyectos freelance, contratos remotos o colaboraciones a largo plazo.",
-        button: "Contáctame"
+        title: "¿Tienes una idea?",
+        description: "Cuéntame qué quieres construir. Te respondo con un plan y una estimación inicial.",
+        button: "Crear mi proyecto"
       }
     }
   },
   en: {
     translation: {
-      nav: { home: "Home", projects: "Projects", about: "About", contact: "Contact" },
+      nav: { home: "Home", projects: "Projects", about: "About", contact: "Contact", services: "Services", create: "App Builder", cta: "Create my project" },
       hero: {
         title1: "I build",
         title2: "modern web solutions",
@@ -52,9 +52,9 @@ const resources = {
         description: "I am a web developer focused on building modern, scalable, and results-oriented applications. I have worked on real systems such as service platforms, CRMs, and admin dashboards, paying close attention to both user experience and system architecture. Additionally, I have experience in front-end digital marketing, creating interfaces that are not only visually appealing and functional but also optimized for user engagement and conversion. I adapt quickly, communicate effectively, and prioritize solutions that add business value."
       },
       cta: {
-        title: "Shall we work together?",
-        description: "Available for freelance projects, remote contracts, or long-term collaborations.",
-        button: "Contact me"
+        title: "Have an idea?",
+        description: "Tell me what you want to build. I'll reply with a plan and initial estimate.",
+        button: "Create my project"
       }
     }
   }
