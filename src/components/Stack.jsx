@@ -1,16 +1,15 @@
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt } from "react-icons/fa"
-import { SiMongodb, SiTailwindcss, SiJavascript } from "react-icons/si"
+import { FaReact, FaNodeJs, FaGitAlt } from "react-icons/fa"
+import { SiMongodb, SiTailwindcss, SiJavascript, SiPostgresql } from "react-icons/si"
 
 export default function Stack() {
   const { t } = useTranslation()
   
-  // AGREGAR FALLBACK si t devuelve undefined
   const stackNames = t("stack", { returnObjects: true }) || []
   const stackTitle = t("stackTitle") || "Tecnologías principales"
 
-  const icons = [<FaReact />, <SiJavascript />, <FaNodeJs />, <SiMongodb />, <SiTailwindcss />, <FaGitAlt />, <FaHtml5 />, <FaCss3Alt />]
+  const icons = [<FaReact />, <SiJavascript />, <FaNodeJs />, <SiPostgresql />, <SiMongodb />, <SiTailwindcss />, <FaGitAlt />]
 
   return (
     <section className="py-24 scroll-mt-32" id="stack">

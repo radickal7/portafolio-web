@@ -17,7 +17,7 @@ const resources = {
         { title: "Sistema de Gestión de Citas (CRM)", description: "Aplicación web para gestión de citas sin login adicional, orientada a negocios.", tech: ["React", "Express", "MongoDB"] },
         { title: "Dashboard Administrativo", description: "Panel con estadísticas, control de usuarios y visualización de datos en tiempo real.", tech: ["React", "Chart.js", "API REST"] }
       ],
-      stack: ["React", "JavaScript", "Node.js", "MongoDB", "Tailwind CSS", "Git", "HTML5", "CSS3"],
+      stack: ["React", "JavaScript", "Node.js", "PostgreSQL", "MongoDB", "Tailwind CSS", "Git"],
       stackTitle: "Tecnologías principales",
       about: {
         title: "Sobre mí",
@@ -45,7 +45,7 @@ const resources = {
         { title: "Appointment Management System (CRM)", description: "Web app for appointment management without extra login, for businesses.", tech: ["React", "Express", "MongoDB"] },
         { title: "Admin Dashboard", description: "Dashboard with stats, user control and real-time data visualization.", tech: ["React", "Chart.js", "REST API"] }
       ],
-      stack: ["React", "JavaScript", "Node.js", "MongoDB", "Tailwind CSS", "Git", "HTML5", "CSS3"],
+      stack: ["React", "JavaScript", "Node.js", "PostgreSQL", "MongoDB", "Tailwind CSS", "Git"],
       stackTitle: "Main Technologies",
       about: {
         title: "About Me",

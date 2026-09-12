@@ -14,8 +14,8 @@ export default function Footer() {
             <div className="text-sm font-semibold text-white mb-3">Navegación</div>
             <ul className="space-y-2 text-sm text-slate-400">
               <li><Link to="/" className="hover:text-white">Inicio</Link></li>
-              <li><a href="#projects" className="hover:text-white">Proyectos</a></li>
-              <li><a href="#servicios" className="hover:text-white">Servicios</a></li>
+              <li><Link to="/services" className="hover:text-white">Servicios</Link></li>
+              <li><Link to="/projects" className="hover:text-white">Proyectos</Link></li>
               <li><Link to="/create" className="hover:text-white">Creador de Apps</Link></li>
               <li><a href="#contact" className="hover:text-white">Contacto</a></li>
             </ul>
@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
           <div>
             <div className="text-sm font-semibold text-white mb-3">Tecnologías</div>
-            <p className="text-sm text-slate-500 leading-relaxed">React · Next.js · Node.js · NestJS · Kotlin · PostgreSQL · Prisma · Docker · IA</p>
+            <p className="text-sm text-slate-500 leading-relaxed">React · JavaScript · Node.js · PostgreSQL · MongoDB · Tailwind CSS · Git</p>
           </div>
         </div>
         <div className="mt-10 pt-6 border-t border-white/[0.06] flex flex-col md:flex-row gap-3 justify-between text-xs text-slate-500">

@@ -29,8 +29,8 @@ export default function Navbar() {
 
   const links = [
     { label: t("nav.home"), hash: "#home" },
-    { label: t("nav.services", "Servicios"), hash: "#servicios" },
-    { label: t("nav.projects"), hash: "#projects" },
+    { label: t("nav.services", "Servicios"), hash: "/services", isRoute: true },
+    { label: t("nav.projects"), hash: "/projects", isRoute: true },
     { label: t("nav.create", "Creador de Apps"), hash: "/create", isRoute: true },
     { label: t("nav.about"), hash: "#about" },
     { label: t("nav.contact"), hash: "#contact" },

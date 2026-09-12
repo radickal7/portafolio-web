@@ -11,7 +11,7 @@ export default function AboutSection() {
           <h2 className="mt-2 text-[28px] md:text-[36px] font-bold tracking-[-0.02em] text-white">{about.title || "Constructor de productos"}</h2>
           <p className="mt-4 text-slate-300 leading-relaxed">{about.description}</p>
           <div className="mt-6 flex flex-wrap gap-2">
-            {(t("stack", { returnObjects: true }) || []).slice(0, 6).map((s) => (
+            {(t("stack", { returnObjects: true }) || []).map((s) => (
               <span key={s} className="px-3 py-1.5 rounded-full bg-white text-slate-900 text-xs font-semibold">{s}</span>
             ))}
           </div>
