@@ -11,7 +11,7 @@ export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
   const toggleLanguage = () => {
-    const newLang = i18n.language === "es" ? "en" : "es"
+    const newLang = i18n.language?.startsWith("es") ? "en" : "es"
     i18n.changeLanguage(newLang)
   }
 

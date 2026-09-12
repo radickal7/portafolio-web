@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 export default function Hero() {
+  const { t } = useTranslation()
   return (
     <section id="home" className="relative pt-[96px] pb-10 lg:pb-16 overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -14,24 +16,24 @@ export default function Hero() {
         <div className="lg:col-span-7">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-300">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Disponible para nuevos proyectos · Respuesta en 24h
+            {t("hero.badge")}
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.5 }} className="mt-6 text-[32px] leading-[0.95] md:text-[52px] font-extrabold tracking-[-0.03em] text-white">
-            Convierto ideas<br />
-            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-300 bg-clip-text text-transparent">en productos digitales.</span>
+            {t("hero.title1")}<br />
+            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-300 bg-clip-text text-transparent">{t("hero.title2")}</span>
           </motion.h1>
 
           <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.14, duration: 0.5 }} className="mt-4 text-[16px] md:text-[18px] leading-relaxed text-slate-400 max-w-[560px]">
-            Desarrollo aplicaciones web, móviles, SaaS y sistemas empresariales desde la idea hasta producción. Infraestructura, diseño y código orientados a negocio.
+            {t("hero.subtitle")}
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }} className="mt-6 flex flex-wrap items-center gap-3">
             <Link to="/create" className="inline-flex items-center justify-center bg-white text-slate-900 px-6 py-3.5 rounded-full text-[14px] font-semibold hover:bg-slate-100 transition">
-              Crear mi proyecto →
+              {t("hero.ctaPrimary")} →
             </Link>
             <a href="#projects" className="inline-flex items-center justify-center border border-white/15 text-white px-6 py-3.5 rounded-full text-[14px] font-semibold hover:bg-white/5 transition">
-              Ver proyectos
+              {t("hero.ctaSecondary")}
             </a>
           </motion.div>
 
@@ -42,11 +44,7 @@ export default function Hero() {
           </div>
 
           <div className="mt-8 grid grid-cols-3 gap-4 max-w-[520px]">
-            {[
-              { v: "3+", l: "Productos en producción" },
-              { v: "100%", l: "Enfoque full stack" },
-              { v: "24h", l: "Respuesta inicial" },
-            ].map((s) => (
+            {(t("hero.stats", { returnObjects: true }) || []).map((s) => (
               <div key={s.v} className="rounded-2xl bg-white/[0.04] border border-white/10 p-4">
                 <div className="text-white font-bold text-lg leading-none">{s.v}</div>
                 <div className="text-xs text-slate-400 mt-1 leading-tight">{s.l}</div>

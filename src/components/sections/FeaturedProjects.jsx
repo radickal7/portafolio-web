@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { projects } from "../../data/projects"
 
 export default function FeaturedProjects() {
+  const { t } = useTranslation()
   return (
     <section id="projects" className="py-16 lg:py-20">
       <div className="max-w-[1280px] mx-auto px-5 lg:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <div className="text-xs tracking-[0.18em] text-indigo-300 font-semibold">PORTAFOLIO</div>
-            <h2 className="mt-2 text-[28px] md:text-[36px] font-bold tracking-[-0.02em] text-white">Proyectos destacados</h2>
-            <p className="mt-3 text-slate-400 max-w-xl">Casos reales, no demos. Cada proyecto resuelve un problema de negocio completo.</p>
+            <div className="text-xs tracking-[0.18em] text-indigo-300 font-semibold">{t("featured.label")}</div>
+            <h2 className="mt-2 text-[28px] md:text-[36px] font-bold tracking-[-0.02em] text-white">{t("featured.title")}</h2>
+            <p className="mt-3 text-slate-400 max-w-xl">{t("featured.subtitle")}</p>
           </div>
-          <Link to="/projects" className="hidden md:inline-flex text-sm font-semibold text-white border border-white/15 rounded-full px-4 py-2 hover:bg-white/5">Ver todos →</Link>
+          <Link to="/projects" className="hidden md:inline-flex text-sm font-semibold text-white border border-white/15 rounded-full px-4 py-2 hover:bg-white/5">{t("featured.viewAll")} →</Link>
         </div>
 
         <div className="mt-8 grid lg:grid-cols-3 gap-4">
@@ -40,10 +42,10 @@ export default function FeaturedProjects() {
                   <span key={f} className="text-xs text-slate-400">• {f}</span>
                 ))}
               </div>
-              <div className="mt-2 text-xs text-slate-500">¿Quieres construir algo parecido?</div>
+              <div className="mt-2 text-xs text-slate-500">{t("featured.wantSimilar")}</div>
               <div className="mt-3 flex gap-2">
-                <Link to={`/projects/${p.slug}`} className="flex-1 bg-white text-slate-900 rounded-full py-2.5 text-sm font-semibold text-center hover:bg-slate-100">Ver caso de estudio →</Link>
-                <Link to="/create" className="flex-1 border border-white/15 text-white rounded-full py-2.5 text-sm font-semibold text-center hover:bg-white/5">Crear similar →</Link>
+                <Link to={`/projects/${p.slug}`} className="flex-1 bg-white text-slate-900 rounded-full py-2.5 text-sm font-semibold text-center hover:bg-slate-100">{t("featured.viewCase")} →</Link>
+                <Link to="/create" className="flex-1 border border-white/15 text-white rounded-full py-2.5 text-sm font-semibold text-center hover:bg-white/5">{t("featured.createSimilar")} →</Link>
               </div>
               </div>
             </motion.div>

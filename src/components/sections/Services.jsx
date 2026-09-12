@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 const services = [
   { slug: "web-apps", title: "Aplicaciones Web", problem: "Necesitas presencia y operación online.", includes: ["Plataformas", "Dashboards", "Sistemas internos", "SEO técnico"], for: "Startups, negocios, creadores" },
@@ -11,13 +12,14 @@ const services = [
 ]
 
 export default function Services() {
+  const { t } = useTranslation()
   return (
     <section id="servicios" className="py-16 lg:py-20 border-t border-white/[0.06] bg-white/[0.02]">
       <div className="max-w-[1280px] mx-auto px-5 lg:px-6">
         <div className="max-w-3xl">
-          <div className="text-xs tracking-[0.18em] text-indigo-300 font-semibold">SERVICIOS</div>
-          <h2 className="mt-2 text-[28px] md:text-[36px] font-bold tracking-[-0.02em] text-white">Lo que puedo hacer por tu negocio</h2>
-          <p className="mt-3 text-slate-400">Cada servicio resuelve un problema concreto. No es una lista de tecnologías, es valor de negocio.</p>
+          <div className="text-xs tracking-[0.18em] text-indigo-300 font-semibold">{t("servicesSection.label")}</div>
+          <h2 className="mt-2 text-[28px] md:text-[36px] font-bold tracking-[-0.02em] text-white">{t("servicesSection.title")}</h2>
+          <p className="mt-3 text-slate-400">{t("servicesSection.subtitle")}</p>
         </div>
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((s, i) => (
@@ -30,7 +32,7 @@ export default function Services() {
                 ))}
               </div>
               <div className="mt-4 text-[11px] text-slate-500">Para: {s.for}</div>
-              <Link to={`/services/${s.slug}`} className="mt-4 inline-flex text-xs font-semibold text-white border border-white/15 rounded-full px-3 py-1.5 hover:bg-white hover:text-slate-900 transition w-fit">Ver servicio →</Link>
+              <Link to={`/services/${s.slug}`} className="mt-4 inline-flex text-xs font-semibold text-white border border-white/15 rounded-full px-3 py-1.5 hover:bg-white hover:text-slate-900 transition w-fit">{t("servicesSection.viewService")} →</Link>
             </motion.div>
           ))}
         </div>
