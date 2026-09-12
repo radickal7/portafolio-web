@@ -35,9 +35,10 @@ export default function FeaturedProjects() {
                   <span key={f} className="text-xs text-slate-400">• {f}</span>
                 ))}
               </div>
-              <div className="mt-6 flex gap-2">
+              <div className="mt-2 text-xs text-slate-500">¿Quieres construir algo parecido?</div>
+              <div className="mt-3 flex gap-2">
                 <Link to={`/projects/${p.slug}`} className="flex-1 bg-white text-slate-900 rounded-full py-2.5 text-sm font-semibold text-center hover:bg-slate-100">Ver caso</Link>
-                <Link to="/create" className="flex-1 border border-white/15 text-white rounded-full py-2.5 text-sm font-semibold text-center hover:bg-white/5">Quiero algo así</Link>
+                <Link to="/create" className="flex-1 border border-white/15 text-white rounded-full py-2.5 text-sm font-semibold text-center hover:bg-white/5">Crear similar →</Link>
               </div>
             </motion.div>
           ))}

@@ -31,6 +31,7 @@ export default function Services() {
                 ))}
               </div>
               <div className="mt-4 text-[11px] text-slate-500">Para: {s.for}</div>
+              <a href="/create" className="mt-4 inline-flex text-xs font-semibold text-indigo-300 hover:text-white">Quiero crear esto →</a>
             </motion.div>
           ))}
         </div>
